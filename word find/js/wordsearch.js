@@ -63,7 +63,7 @@
     var itWorked = true;
 
     for (var i = 0; i < this.settings.words.length; i++) {
-      // Convert all the letters to upper case      
+      // Convert all the letters to upper case
 	  this.settings.wordsList[i] =  this.settings.words[i].trim();
 	  this.settings.words[i] =  removeDiacritics(this.settings.wordsList[i].trim().toUpperCase());
 
@@ -341,14 +341,17 @@
       var wordList = document.querySelector(".ws-words");
       var wordListItems = wordList.getElementsByTagName("li");
       for(var i=0; i<wordListItems.length; i++){
-        if(words[0] == removeDiacritics(wordListItems[i].innerHTML.toUpperCase())){			
+        if(words[0] == removeDiacritics(wordListItems[i].innerHTML.toUpperCase())){
           if(wordListItems[i].innerHTML != "<del>"+wordListItems[i].innerHTML+"</del>") { //Check the word is never found
 			wordListItems[i].innerHTML = "<del>"+wordListItems[i].innerHTML+"</del>";
 			//Increment solved words.
-			this.solved++;
+			   this.solved++;
+        var msg = new SpeechSynthesisUtterance(words[0]);
+        msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == 'Whisper'; })[0];
+        speechSynthesis.speak(msg);
 		  }
-		  
-	  
+
+
         }
       }
 
@@ -604,6 +607,6 @@ function searchLanguage(firstLetter)
 	}
 	console.log("Letter not detected : "+firstLetter+":"+codefirstLetter);
 	return codeLetter;
-	
-	
+
+
 }
