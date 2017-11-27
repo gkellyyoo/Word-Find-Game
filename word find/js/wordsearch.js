@@ -24,10 +24,10 @@
 
     // Default settings
     var default_settings = {
-      'directions': ['W', 'N', 'WN', 'EN'],
+      'directions': ['W', 'N', 'WN'],
       'gridSize': 10,
       'words': ['one', 'two', 'three', 'four', 'five'],
-	  'wordsList' : [],
+	    'wordsList' : [],
       'debug': false
     }
     this.settings = Object.merge(settings, default_settings);
@@ -43,6 +43,7 @@
 
         isWorked = this.addWords();
       }
+
 
       // Fill up the remaining blank items
       if (!this.settings.debug) {
@@ -74,7 +75,8 @@
         itWorked = false;
       }
     }
-
+    console.log("parse");
+console.log(this.settings);
     return itWorked;
   }
 
@@ -102,6 +104,9 @@
           keepGoing = false;
         }
       }
+          console.log("add");
+
+      console.log(this.settings);
 
       return isWorked;
   }

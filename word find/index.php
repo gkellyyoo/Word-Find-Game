@@ -3,10 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Word search game</title>
-    <link rel="stylesheet" href="css/wordsearch.min.css" />
     <link rel="stylesheet" href="css/wordsearch.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/style.min.css" />
   </head>
   <body>
 
@@ -62,7 +60,7 @@ die("Connection failed: " . $conn->connect_error);
   
       <textarea rows="4" cols="50" name="list",id="list">
       </textarea>
-      <input type='submit'>
+      <input id="userListSubmit" type='submit'>
       </form>
       <!-- <input type="text" id="userInputList" name="userInputList" style="width:80%"> <br><br>
       <button id="userListSubmit">Create my list!</button> -->
@@ -109,7 +107,7 @@ die("Connection failed: " . $conn->connect_error);
   </div>
 
     <script src="js/utility.min.js"></script>
-    <script src="js/wordsearch.min.js"></script>
+    <script src="js/wordsearch.js"></script>
     <script type="text/javascript">
 	
 	
@@ -149,6 +147,11 @@ die("Connection failed: " . $conn->connect_error);
       if (event.target == modal) {
         modal.style.display = "none";
       }
+    }
+
+
+    userListSubmit.onclick = function() {
+      modal.style.display = "none";
     }
 
     console.log("hihihi");

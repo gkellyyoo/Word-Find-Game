@@ -144,11 +144,7 @@ else
     }
 
     var gameAreaEl = document.getElementById('ws-area');
-    var gameobj = gameAreaEl.wordSearch();
-
-    // Put words into `.ws-words`
-    var words = gameobj.settings.wordsList,
-      wordsWrap = document.querySelector('.ws-words');
+    
     // for (i in words) {
     //   var liEl = document.createElement('li');
     //   liEl.setAttribute('class', 'ws-word');
@@ -188,6 +184,19 @@ else
 
     var pieces = "<?php echo $x ?>"
     console.log("hihihihihi:" + pieces);
+        var new_settings = {
+      'directions': ['W', 'N', 'WN'],
+      'gridSize': 10,
+      'words': pieces.split(","),
+      'wordsList' : [],
+      'debug': false
+    }
+
+    var gameobj = gameAreaEl.wordSearch(new_settings);
+
+    // Put words into `.ws-words`
+    var words = gameobj.settings.wordsList,
+      wordsWrap = document.querySelector('.ws-words');
 
     modal.style.display = "none";
     var value = pieces;
