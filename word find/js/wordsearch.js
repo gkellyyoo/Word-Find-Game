@@ -372,6 +372,9 @@ var myColor = Math.floor(Math.random() * 5) + 1;
 			wordListItems[i].innerHTML = "<del>"+wordListItems[i].innerHTML+"</del>";
 			//Increment solved words.
 			this.solved++;
+		  	var msg = new SpeechSynthesisUtterance(words[0]);
+			msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == 'Whisper'; })[0];
+			speechSynthesis.speak(msg);
 		  }
 		  
 	  
