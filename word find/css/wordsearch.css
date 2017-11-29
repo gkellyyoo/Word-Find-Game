@@ -20,12 +20,41 @@
 }
 
 .ws-col.ws-selected {
-  background: #eee;
+  background: #C9C9C9;
+  border-radius: 25px;
 }
 
-.ws-found {
-  background: yellow;
+/*.ws-found {
+  background: #FFEE91;
+  border-radius: 25px;
+}*/
+
+.pinkBackground {
+  background: #FFB7CF;
+  border-radius: 25px;
 }
+
+.yellowBackground {
+  background: #FFEE91;
+  border-radius: 25px;
+}
+
+.blueBackground {
+  background: #B7E7FF;
+  border-radius: 25px;
+}
+
+.greenBackground {
+  background: #D1ECB8;
+  border-radius: 25px;
+}
+
+.purpleBackground {
+  background: #D5B8EC;
+  border-radius: 25px;
+}
+
+
 
 .ws-game-over-outer {
   background: rgba(0, 0, 0, 0.85);
@@ -80,7 +109,6 @@
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
-    color: red;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;

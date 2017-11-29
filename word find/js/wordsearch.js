@@ -331,16 +331,37 @@ console.log(this.settings);
       words[0] += selected[i].letter;
     }
     words.push(words[0].split('').reverse().join(''));
-
+var myColor = Math.floor(Math.random() * 5) + 1;
     if (this.settings.words.indexOf(words[0]) > -1 ||
         this.settings.words.indexOf(words[1]) > -1) {
+
+              
+        console.log("myColor");
+
       for (var i = 0; i < selected.length; i++) {
         var row = selected[i].row + 1,
           col = selected[i].col + 1,
           el = document.querySelector('.ws-area .ws-row:nth-child(' + row + ') .ws-col:nth-child(' + col + ')');
-
-        el.classList.add('ws-found');
+        switch(myColor) {
+          case 1:
+          el.classList.add('pinkBackground');
+          break;
+          case 2:
+          el.classList.add('yellowBackground');
+          break;
+          case 3:
+          el.classList.add('blueBackground');
+          break;
+          case 4:
+          el.classList.add('greenBackground');
+          break;
+          case 5:
+          el.classList.add('purpleBackground');
+          break;
+        }
+        // el.classList.add('ws-found');
       }
+
 
       //Cross word off list.
       var wordList = document.querySelector(".ws-words");

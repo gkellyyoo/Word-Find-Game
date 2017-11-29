@@ -20,7 +20,8 @@ die("Connection failed: " . $conn->connect_error);
 }
 ?> 
     <div class="wrap">
-      <h1 class="logo">Word search game</h1>
+      <section class="prettyTitle"> <span>Word search game</span></section>
+      
       <section id="ws-area"></section>
       <ul class="ws-words"></ul>
     </div>
@@ -50,16 +51,16 @@ die("Connection failed: " . $conn->connect_error);
 
     <!-- Modal content -->
     <div class="modal-content">
-      <span class="close">&times;</span>
+      <span class="close" id="insertModalClose">&times;</span>
       <form action="insert.php" method = "POST">
       <p>
       Enter a list of vocabularies splitted by comma+space below. <br>
       Example: Cat, Dog, Rabbit, Horse
       </p>
-      Topic: <input type="text" name="Heading" id="Heading"></br>
+      Topic: <input type="text" name="Heading" id="Heading" style="width: 30%"></br></br>
   
-      <textarea rows="4" cols="50" name="list",id="list">
-      </textarea>
+      <textarea rows="4" cols="50" name="list" id="list" style="width: 60%">
+      </textarea></br>
       <input id="userListSubmit" type='submit'>
       </form>
       <!-- <input type="text" id="userInputList" name="userInputList" style="width:80%"> <br><br>
@@ -69,6 +70,7 @@ die("Connection failed: " . $conn->connect_error);
 
   <div id="selectModal" class="modal">
     <div class="modal-content">
+      <span class="close" id="selectModalClose">&times;</span>
       <?php
         $sql = "SELECT * FROM lists";
         $result = $conn->query($sql);
@@ -135,12 +137,13 @@ die("Connection failed: " . $conn->connect_error);
     var importBtn = document.getElementById('importBtn');
     var modal = document.getElementById('myModal');
     var selectModal = document.getElementById('selectModal');
-    var span = document.getElementsByClassName("close")[0];
+    var insertModalX = document.getElementsByClassName("close")[0];
+    var selectModalX = document.getElementsByClassName("close")[1];
 
     btn.onclick = function() {
       modal.style.display = "block";
     }
-    span.onclick = function() {
+    insertModalX.onclick = function() {
       modal.style.display = "none";
     }
     window.onclick = function(event) {
@@ -159,7 +162,7 @@ die("Connection failed: " . $conn->connect_error);
     importBtn.onclick = function() {
       selectModal.style.display = "block";
     }
-    span.onclick = function() {
+    selectModalX.onclick = function() {
       selectModal.style.display = "none";
     }
     window.onclick = function(event) {

@@ -1,5 +1,4 @@
 /* CSS reset */
-
 body, h1 {
   margin: 0;
   padding: 0;
@@ -11,9 +10,21 @@ h1 {
 
 body {
   color: #333;
+  margin-top: 30px;
 }
 
 /* Common */
+
+.prettyTitle span {
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 40px;
+  font-family: 'Fredoka One', sans-serif;
+  text-shadow: 0.25rem -0.25rem rgba(255,0,0,0.2),
+               -0.25rem -0.25rem rgba(0, 255, 255, 0.3),
+                0.1rem        0.3rem  rgba(255,255, 0, 0.4);  
+}
 
 .fix {
   *zoom: 1;
@@ -48,6 +59,7 @@ body {
 .ws-area, .ws-words {
   display: inline-block;
   vertical-align: top;
+  margin-left: 12%
 }
 
 .ws-words {
@@ -57,6 +69,7 @@ body {
 
 .ws-word {
   margin-bottom: 4px;
+  font-size: 20px;
 }
 
 .ws-words ::first-letter{
@@ -92,8 +105,8 @@ body {
 
 /* Modal Content/Box */
 .modal-content {
+  text-align: center;
     background-color: #fefefe;
-    color: red;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;

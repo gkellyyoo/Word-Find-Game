@@ -3,10 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Word search game</title>
-    <link rel="stylesheet" href="css/wordsearch.min.css" />
     <link rel="stylesheet" href="css/wordsearch.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/style.min.css" />
   </head>
   <body>
 
@@ -60,7 +58,7 @@ else
 ?>
 
     <div class="wrap">
-      <h1 class="logo">Word search game</h1>
+      <section class="prettyTitle"> <span>Word search game</span></section>
       <section id="ws-area"></section>
       <ul class="ws-words"></ul>
     </div>
@@ -83,10 +81,10 @@ else
       Enter a list of vocabularies splitted by comma+space below. <br>
       Example: Cat, Dog, Rabbit, Horse
       </p>
-      Topic: <input type="text" name="Heading" id="Heading"></br>
+      Topic: <input type="text" name="Heading" id="Heading" style="width: 30%"></br></br>
   
-      <textarea rows="4" cols="50" name="list",id="list">
-      </textarea>
+      <textarea rows="4" cols="50" name="list" id="list" style="width: 60%">
+      </textarea></br>
       <input type='submit'>
       </form>
       <!-- <input type="text" id="userInputList" name="userInputList" style="width:80%"> <br><br>
@@ -134,7 +132,7 @@ else
   </div>
     
     <script src="js/utility.min.js"></script>
-    <script src="js/wordsearch.min.js"></script>
+    <script src="js/wordsearch.js"></script>
     <script type="text/javascript">
 	
 	  var topic;
