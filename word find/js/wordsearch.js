@@ -24,10 +24,10 @@
 
     // Default settings
     var default_settings = {
-      'directions': ['W', 'N', 'WN', 'EN'],
+      'directions': ['W', 'N', 'WN'],
       'gridSize': 10,
       'words': ['one', 'two', 'three', 'four', 'five'],
-	  'wordsList' : [],
+	    'wordsList' : [],
       'debug': false
     }
     this.settings = Object.merge(settings, default_settings);
@@ -43,6 +43,7 @@
 
         isWorked = this.addWords();
       }
+
 
       // Fill up the remaining blank items
       if (!this.settings.debug) {
@@ -63,7 +64,7 @@
     var itWorked = true;
 
     for (var i = 0; i < this.settings.words.length; i++) {
-      // Convert all the letters to upper case
+      // Convert all the letters to upper case      
 	  this.settings.wordsList[i] =  this.settings.words[i].trim();
 	  this.settings.words[i] =  removeDiacritics(this.settings.wordsList[i].trim().toUpperCase());
 
@@ -74,7 +75,8 @@
         itWorked = false;
       }
     }
-
+    console.log("parse");
+console.log(this.settings);
     return itWorked;
   }
 
@@ -102,6 +104,9 @@
           keepGoing = false;
         }
       }
+          console.log("add");
+
+      console.log(this.settings);
 
       return isWorked;
   }
@@ -326,32 +331,53 @@
       words[0] += selected[i].letter;
     }
     words.push(words[0].split('').reverse().join(''));
-
+var myColor = Math.floor(Math.random() * 5) + 1;
     if (this.settings.words.indexOf(words[0]) > -1 ||
         this.settings.words.indexOf(words[1]) > -1) {
+
+              
+        console.log("myColor");
+
       for (var i = 0; i < selected.length; i++) {
         var row = selected[i].row + 1,
           col = selected[i].col + 1,
           el = document.querySelector('.ws-area .ws-row:nth-child(' + row + ') .ws-col:nth-child(' + col + ')');
-
-        el.classList.add('ws-found');
+        switch(myColor) {
+          case 1:
+          el.classList.add('pinkBackground');
+          break;
+          case 2:
+          el.classList.add('yellowBackground');
+          break;
+          case 3:
+          el.classList.add('blueBackground');
+          break;
+          case 4:
+          el.classList.add('greenBackground');
+          break;
+          case 5:
+          el.classList.add('purpleBackground');
+          break;
+        }
+        // el.classList.add('ws-found');
       }
+
 
       //Cross word off list.
       var wordList = document.querySelector(".ws-words");
       var wordListItems = wordList.getElementsByTagName("li");
       for(var i=0; i<wordListItems.length; i++){
-        if(words[0] == removeDiacritics(wordListItems[i].innerHTML.toUpperCase())){
+        if(words[0] == removeDiacritics(wordListItems[i].innerHTML.toUpperCase())){			
           if(wordListItems[i].innerHTML != "<del>"+wordListItems[i].innerHTML+"</del>") { //Check the word is never found
 			wordListItems[i].innerHTML = "<del>"+wordListItems[i].innerHTML+"</del>";
-			//Increment solved words.
-			   this.solved++;
-        var msg = new SpeechSynthesisUtterance(words[0]);
-        msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == 'Whisper'; })[0];
-        speechSynthesis.speak(msg);
+			//Increment solved words---.
+			this.solved++;
+		  	var msg = new SpeechSynthesisUtterance(words[0]);
+			msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == 'Whisper'; })[0];
+			speechSynthesis.speak(msg);
 		  }
-
-
+		  
+	  
         }
       }
 
@@ -607,6 +633,6 @@ function searchLanguage(firstLetter)
 	}
 	console.log("Letter not detected : "+firstLetter+":"+codefirstLetter);
 	return codeLetter;
-
-
+	
+	
 }
